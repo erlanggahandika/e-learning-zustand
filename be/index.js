@@ -128,7 +128,7 @@ app.get("/health", async (req, res) => {
   } catch (err) {
     res.status(500).json({ status: "error", service: "backend", db: "disconnected" });
   }
-});
+});//ini
 app.get('/', (req, res) => {
   res.send('Backend is running! ');
 });
