@@ -1,0 +1,26 @@
+POST https://app.webinarku.tech/backend/admin/register-admin
+Content-Type: application/json
+
+{
+  "name": "admin",
+  "email": "erlanggahandika73@gmail.com",
+  "password": "123"
+}
+
+###
+POST http://localhost/v1/admin/verify
+Content-Type: application/json
+
+{
+    "email": "erlanggahandika73@gmail.com",
+    "otp_code": "686349"
+}
+
+###
+POST https://app.webinarku.tech/backend/admin/sign-admin
+Content-Type: application/json
+
+{
+    "email": "erlanggahandika73@gmail.com",
+    "password": "123"
+}

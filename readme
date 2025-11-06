@@ -1,0 +1,41 @@
+ <!-- docker compose --compatibility up -d --scale backend=3 -->
+ 
+ <!-- eas build -p android --non-interactive --no-wait
+ --> ini untuk .aab
+
+ <!-- Cara build:
+
+APK (testing cepat):
+eas build -p android --profile preview ini dipake
+
+AAB (Play Store):
+eas build -p android --profile production
+ -->
+
+
+
+eas build -p ios
+
+-p android → build Android
+
+-p ios → build iOS
+
+Syarat khusus iOS
+
+Harus punya Apple Developer Account (berbayar, $99/tahun).
+
+Harus punya MacOS atau CI (EAS sudah sediain cloud build, jadi gak wajib punya Mac sendiri).
+
+EAS akan minta login Apple ID kamu buat generate certificates dan provisioning profiles.
+
+Output build iOS
+
+Hasilnya .ipa (file iOS App).
+
+Bisa dipakai untuk:
+
+TestFlight → buat testing ke user tertentu.
+
+App Store → upload ke publik.
+
+Kalau mau kasih link langsung (kayak APK di Android), agak ribet di iOS karena Apple gak izinkan install sembarangan kecuali device udah didaftarin di Apple Developer Console (UDID)
