@@ -1,66 +1,197 @@
+# version: "3.9"
+
+# services:
+#   # ===========================
+#   # FRONTEND - NEXT.JS DEV
+#   # ===========================
+#   dashadmin:
+#     build:
+#       context: ./feadmin
+#       dockerfile: Dockerfile
+#     expose:
+#       - "3000" # expose bang penting ni
+#     volumes:
+#       - ./feadmin:/app
+#       # - /app/node_modules
+#     working_dir: /app
+#     environment:
+#       - NODE_ENV=development
+#       - CHOKIDAR_USEPOLLING=true
+#       - WATCHPACK_POLLING=true
+#       - NEXT_PUBLIC_API_URL=http://fe_admin:80/backend/admin # API dilewatkan via HAProxy
+#     depends_on:
+#       - haproxy
+#     networks:
+#       - dockermate_network
+#     deploy:
+#       resources:
+#         limits:
+#           cpus: "1.0"
+#           memory: 1.5G
+#         reservations:
+#           cpus: "0.25"
+#           memory: 512M
+
+#   dashuser:
+#     build:
+#       context: ./feuser
+#       dockerfile: Dockerfile
+#     expose:
+#       - "3000" # expose bang penting ni
+#     volumes:
+#       - ./feuser:/app
+     
+#     working_dir: /app
+#     environment:
+#       - NODE_ENV=development
+#       - CHOKIDAR_USEPOLLING=true
+#       - WATCHPACK_POLLING=true
+#       - NEXT_PUBLIC_API_URL=http://fe_user:80/backend/user # API dilewatkan via HAProxy
+#     depends_on:
+#       - haproxy
+#     networks:
+#       - dockermate_network
+#     deploy:
+#       resources:
+#         limits:
+#           cpus: "1.0"
+#           memory: 1.5G
+#         reservations:
+#           cpus: "0.25"
+#           memory: 512M
+
+  
+#   # ===========================
+#   # BACKEND - EXPRESS + PRISMA
+#   # ===========================
+#   backend:
+#     build:
+#       context: ./be
+#     env_file:
+#       - ./be/.env
+#     expose:
+#       - "3001" # cukup expose, tidak perlu ports
+#     volumes:
+#       - ./be:/app
+#       - /app/node_modules
+#       - ./be/.env:/app/.env
+#     working_dir: /app
+#     environment:
+#       - NODE_ENV=development
+#       - DATABASE_URL=mysql://root:rootpassword@mysql:3306/sekolahcasn
+#       - REDIS_HOST=redis
+#       - REDIS_PORT=6379
+#     command: sh -c "npx prisma generate && npm run dev"
+#     depends_on:
+#       - mysql
+#       - redis
+#     networks:
+#       dockermate_network:
+#         aliases:
+#           - backend
+#     restart: always
+#     deploy:
+#       replicas: 2 #  Scale otomatis 3 container backend
+#       resources:
+#         limits:
+#           cpus: "0.75"
+#           memory: 512M
+#         reservations:
+#           cpus: "0.25"
+#           memory: 256M
+
+#   # ===========================
+#   # BACKEND - EXPRESS + PRISMA
+#   # ===========================
+
+#   # ===========================
+#   # DATABASE - MYSQL 8
+#   # ===========================
+#   mysql:
+#     image: mysql:8
+#     restart: always
+#     environment:
+#       MYSQL_ROOT_PASSWORD: rootpassword
+#       MYSQL_DATABASE: sekolahcasn
+#       MYSQL_ROOT_HOST: "%"
+#     ports:
+#       - "3304:3306"
+#     volumes:
+#       - mysql_data:/var/lib/mysql
+#     networks:
+#       - dockermate_network
+#     healthcheck:
+#       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+#       interval: 10s
+#       timeout: 5s
+#       retries: 5
+
+#   # ===========================
+#   # DATABASE ADMIN - PHPMYADMIN
+#   # ===========================
+#   phpmyadmin:
+#     image: phpmyadmin:latest
+#     restart: always
+#     ports:
+#       - "8082:80"
+#     environment:
+#       - PMA_HOST=mysql
+#       - PMA_PORT=3306
+#       - UPLOAD_LIMIT=256M
+#       - PMA_ABSOLUTE_URI=https://app.webinarku.tech/database-sekolahcasn/
+#     depends_on:
+#       - mysql
+#     networks:
+#       - dockermate_network
+
+#   # ===========================
+#   # CACHING & QUEUE - REDIS
+#   # ===========================
+#   redis:
+#     image: redis:7-alpine
+#     restart: always
+#     expose:
+#       - "6379"
+#     command: ["redis-server", "--appendonly", "yes"]
+#     volumes:
+#       - redis_data:/data
+#     networks:
+#       - dockermate_network
+
+#   # ===========================
+#   # LOAD BALANCER - HAProxy
+#   # ===========================
+#   haproxy:
+#     image: haproxy:2.9-alpine
+#     container_name: haproxy
+#     restart: always
+#     ports:
+#       - "80:80"
+#       - "1936:1936" # dashboard haproxy
+#     volumes:
+#       - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+#     depends_on:
+#       - backend
+#     networks:
+#       - dockermate_network
+
+# # ===========================
+# # VOLUMES & NETWORKS
+# # ===========================
+# volumes:
+#   mysql_data:
+#   redis_data:
+
+# networks:
+#   dockermate_network:
+#     driver: bridge
+
+
+# =====prod in here
+
 version: "3.9"
 
 services:
-  # ===========================
-  # FRONTEND - NEXT.JS DEV
-  # ===========================
-  dashadmin:
-    build:
-      context: ./feadmin
-      dockerfile: Dockerfile
-    expose:
-      - "3000" # expose bang penting ni
-    volumes:
-      - ./feadmin:/app
-      # - /app/node_modules
-    working_dir: /app
-    environment:
-      - NODE_ENV=development
-      - CHOKIDAR_USEPOLLING=true
-      - WATCHPACK_POLLING=true
-      - NEXT_PUBLIC_API_URL=http://fe_admin:80/backend/admin # API dilewatkan via HAProxy
-    depends_on:
-      - haproxy
-    networks:
-      - dockermate_network
-    deploy:
-      resources:
-        limits:
-          cpus: "1.0"
-          memory: 1.5G
-        reservations:
-          cpus: "0.25"
-          memory: 512M
-
-  dashuser:
-    build:
-      context: ./feuser
-      dockerfile: Dockerfile
-    expose:
-      - "3000" # expose bang penting ni
-    volumes:
-      - ./feuser:/app
-     
-    working_dir: /app
-    environment:
-      - NODE_ENV=development
-      - CHOKIDAR_USEPOLLING=true
-      - WATCHPACK_POLLING=true
-      - NEXT_PUBLIC_API_URL=http://fe_user:80/backend/user # API dilewatkan via HAProxy
-    depends_on:
-      - haproxy
-    networks:
-      - dockermate_network
-    deploy:
-      resources:
-        limits:
-          cpus: "1.0"
-          memory: 1.5G
-        reservations:
-          cpus: "0.25"
-          memory: 512M
-
-  
   # ===========================
   # BACKEND - EXPRESS + PRISMA
   # ===========================
@@ -70,7 +201,7 @@ services:
     env_file:
       - ./be/.env
     expose:
-      - "3001" # cukup expose, tidak perlu ports
+      - "3001"
     volumes:
       - ./be:/app
       - /app/node_modules
@@ -79,33 +210,15 @@ services:
     environment:
       - NODE_ENV=development
       - DATABASE_URL=mysql://root:rootpassword@mysql:3306/sekolahcasn
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
     command: sh -c "npx prisma generate && npm run dev"
     depends_on:
       - mysql
-      - redis
     networks:
-      dockermate_network:
-        aliases:
-          - backend
+      - dockermate_network
     restart: always
-    deploy:
-      replicas: 2 #  Scale otomatis 3 container backend
-      resources:
-        limits:
-          cpus: "0.75"
-          memory: 512M
-        reservations:
-          cpus: "0.25"
-          memory: 256M
 
   # ===========================
-  # BACKEND - EXPRESS + PRISMA
-  # ===========================
-
-  # ===========================
-  # DATABASE - MYSQL 8
+  # DATABASE - MYSQL
   # ===========================
   mysql:
     image: mysql:8
@@ -138,40 +251,8 @@ services:
       - PMA_HOST=mysql
       - PMA_PORT=3306
       - UPLOAD_LIMIT=256M
-      - PMA_ABSOLUTE_URI=https://app.webinarku.tech/database-sekolahcasn/
     depends_on:
       - mysql
-    networks:
-      - dockermate_network
-
-  # ===========================
-  # CACHING & QUEUE - REDIS
-  # ===========================
-  redis:
-    image: redis:7-alpine
-    restart: always
-    expose:
-      - "6379"
-    command: ["redis-server", "--appendonly", "yes"]
-    volumes:
-      - redis_data:/data
-    networks:
-      - dockermate_network
-
-  # ===========================
-  # LOAD BALANCER - HAProxy
-  # ===========================
-  haproxy:
-    image: haproxy:2.9-alpine
-    container_name: haproxy
-    restart: always
-    ports:
-      - "80:80"
-      - "1936:1936" # dashboard haproxy
-    volumes:
-      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
-    depends_on:
-      - backend
     networks:
       - dockermate_network
 
@@ -180,7 +261,6 @@ services:
 # ===========================
 volumes:
   mysql_data:
-  redis_data:
 
 networks:
   dockermate_network:
