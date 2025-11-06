@@ -1,0 +1,162 @@
+###
+POST https://app.webinarku.tech/backend/user/sign-in
+Content-Type: application/json
+
+{
+ "email": "kamartas28@gmail.com",
+  "password": "Desta1234"
+}
+
+###
+POST https://app.webinarku.tech/v1/sign-in
+Content-Type: application/json
+
+{
+ "email": "erlanggahandika73@gmail.com",
+  "password": "12345678"
+}
+
+###
+POST https://app.webinarku.tech/v1/create-course
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNzFkOWY5YWQtMDhlMS00MmJkLWE3NTktYzQxMWU3Y2I2YmVhIiwibmFtZSI6IkJhaGxpbCIsImVtYWlsIjoiZXJsYW5nZ2FoYW5kaWthNzNAZ21haWwuY29tIiwidG9rZW5WZXJzaW9uIjowLCJpYXQiOjE3NjE2NjQ3MjUsImV4cCI6MTc2MTY3MTkyNX0.TqK1ZJX-UxqI7S9RIIydm7ms8sKmcBNaFGqcA8VUFik
+Content-Type: application/json
+
+{
+  "title": "Course 3",
+  "description": "Kursus lengkap untuk pemula belajar React, mulai dari dasar hingga membuat project nyata.",
+  "image": "/uploads/avatar2.png",
+  "price": 550000,
+  "isPublished": true,
+  "vidio": "https://example.com/intro-react.mp4"
+}
+
+
+###
+GET https://app.webinarku.tech/backend/user/get-course
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiYjhkMzUxNWYtZmE3Yy00ZDAzLWI2N2EtNWNmZmMzMTZkYTM1IiwibmFtZSI6IkJhaGxpbCB3YWt0dSBrZWNpbCIsImVtYWlsIjoiZXJsYW5nZ2FoYW5kaWthNzNAZ21haWwuY29tIiwidG9rZW5WZXJzaW9uIjowLCJpYXQiOjE3NjEyNTIzODAsImV4cCI6MTc2MTI1OTU4MH0.-_8NMz-Uj7aWiyQ0MUxIBsGn_4Dxhs7OZ46R-X_GID0
+
+###
+GET https://app.webinarku.tech/app2/v1/get-course-by-id/62504185-e7c8-4eb5-a057-1856343ba35c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOGIwMmMyYTYtYzk5NC00M2E1LWFhOGMtZTQwOTRmMDJkZjBjIiwibmFtZSI6InB1amkiLCJlbWFpbCI6ImthbWFydGFzMjhAZ21haWwuY29tIiwidG9rZW5WZXJzaW9uIjowLCJpYXQiOjE3NjEyNjAxMDgsImV4cCI6MTc2MTI2NzMwOH0.aQ_-IhXhWoSCOnsUigJQoQgNfD19OLp1wv7sUswTtiU
+
+###
+PATCH https://app.webinarku.tech/app2/v1/update-course/bccbf556-93b3-48b2-96d1-a1a762a30f90
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiYTk1NjZmYTEtMjNhNy00ZmJjLTg0M2YtNzdjMTJkMzhmYzE1IiwibmFtZSI6ImRldmVsb3BlciBnYW50ZW5nIiwiZW1haWwiOiJ0YXJvbmlzbWluZTA4M0BnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc2MTA5NTI1NSwiZXhwIjoxNzYxMDk2MTU1fQ.ByNMTjOD5PXx42Fsjfs588GKArh4hrkIBadmS8H_I14
+Content-Type: application/json
+
+{
+  "title": "Belajar javascript dari dasar",
+  "description": "Kursus lengkap untuk pemula belajar React, mulai dari dasar hingga membuat project nyata.",
+  "price": 250000,
+  "isPublished": true,
+  "video": "https://example.com/intro-react.mp4"
+}
+
+###
+DELETE https://app.webinarku.tech/app2/v1/delete-course/bccbf556-93b3-48b2-96d1-a1a762a30f90
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiYjhkMzUxNWYtZmE3Yy00ZDAzLWI2N2EtNWNmZmMzMTZkYTM1IiwibmFtZSI6IkJhaGxpbCB3YWt0dSBrZWNpbCIsImVtYWlsIjoiZXJsYW5nZ2FoYW5kaWthNzNAZ21haWwuY29tIiwidG9rZW5WZXJzaW9uIjowLCJpYXQiOjE3NjEyMjQ4MTUsImV4cCI6MTc2MTIzMjAxNX0.UiIamcg0Mgwr1Y-FtqbCTcLh8YfLaCPZWV-ZmNSKInc
+
+
+//perteuan
+
+
+
+
+///  pertemuan dengan uuid course
+###
+POST https://app.webinarku.tech/app2/v1/tambah-pertemuan/62504185-e7c8-4eb5-a057-1856343ba35c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiYjhkMzUxNWYtZmE3Yy00ZDAzLWI2N2EtNWNmZmMzMTZkYTM1IiwibmFtZSI6IkJhaGxpbCB3YWt0dSBrZWNpbCIsImVtYWlsIjoiZXJsYW5nZ2FoYW5kaWthNzNAZ21haWwuY29tIiwidG9rZW5WZXJzaW9uIjowLCJpYXQiOjE3NjExNzM0MDQsImV4cCI6MTc2MTE3NDMwNH0.hJTN0qbQoiH7gRuveE6fR0sK5_PzX8ezVh2an3g2Po4
+Content-Type: application/json
+
+{
+  "title": "Pertemuan 3: Pengenalan Haproxy",
+  "content": "Di pertemuan ini, kita akan membahas pengenalan materi dan tujuan course secara umum.",
+  "order": 3 
+}
+
+
+### ambil pertemuan berdasarkan course yg terdaftar
+GET https://app.webinarku.tech/app2/v1/list-pertemuan/62504185-e7c8-4eb5-a057-1856343ba35c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOGIwMmMyYTYtYzk5NC00M2E1LWFhOGMtZTQwOTRmMDJkZjBjIiwibmFtZSI6InB1amkiLCJlbWFpbCI6ImthbWFydGFzMjhAZ21haWwuY29tIiwidG9rZW5WZXJzaW9uIjowLCJpYXQiOjE3NjEyMjQ5ODQsImV4cCI6MTc2MTIzMjE4NH0.gppTL0oIChrS6RKtgVKIq7MbeZt46BYIQK-FrKFKcN4
+
+### edit pertemuan berdasarkan uuid pertemuan yang terdaftar
+PATCH https://app.webinarku.tech/app2/v1/update-pertemuan/d836bae2-216d-45f0-9943-ab8564353a47
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiYTk1NjZmYTEtMjNhNy00ZmJjLTg0M2YtNzdjMTJkMzhmYzE1IiwibmFtZSI6ImRldmVsb3BlciBnYW50ZW5nIiwiZW1haWwiOiJ0YXJvbmlzbWluZTA4M0BnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc2MTA5NTI1NSwiZXhwIjoxNzYxMDk2MTU1fQ.ByNMTjOD5PXx42Fsjfs588GKArh4hrkIBadmS8H_I14
+Content-Type: application/json
+
+{
+  "title": "Pertemuan 1: Pengenalan Course updated ke 2",
+  "content": "Di pertemuan ini, kita akan membahas pengenalan materi dan tujuan course secara umum.",
+  "order": 1 
+}
+
+### hapus perteuan berdasarkan uuid pertemuan
+DELETE https://app.webinarku.tech/app2/v1/hapus-pertemuan/f4ae11d4-db78-40bc-8bdb-8be8bd99ea40
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiYTk1NjZmYTEtMjNhNy00ZmJjLTg0M2YtNzdjMTJkMzhmYzE1IiwibmFtZSI6ImRldmVsb3BlciBnYW50ZW5nIiwiZW1haWwiOiJ0YXJvbmlzbWluZTA4M0BnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc2MTA5NTI1NSwiZXhwIjoxNzYxMDk2MTU1fQ.ByNMTjOD5PXx42Fsjfs588GKArh4hrkIBadmS8H_I14
+
+
+//soal dengan uuid pertemuan
+###
+POST https://app.webinarku.tech/app2/v1/buat-soal-pertemuan/999369a8-b1d1-4a79-ab2c-bde0325ff49d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiYjhkMzUxNWYtZmE3Yy00ZDAzLWI2N2EtNWNmZmMzMTZkYTM1IiwibmFtZSI6IkJhaGxpbCB3YWt0dSBrZWNpbCIsImVtYWlsIjoiZXJsYW5nZ2FoYW5kaWthNzNAZ21haWwuY29tIiwidG9rZW5WZXJzaW9uIjowLCJpYXQiOjE3NjExODAxNTAsImV4cCI6MTc2MTE4MTA1MH0.nkK3m4dmLvzEADX_MV94vuREXfAmG_HZZ2xPVFs8ug4
+Content-Type: application/json
+
+{
+  "question": "Apa itu JavaScript?",
+  "options": [
+    "Bahasa pemrograman jawa",
+    "Bahasa pemrograman back-end",
+    "Bahasa pemrograman fullstack",
+    "Semua jawaban benar"
+  ],
+  "answer": "Semua jawaban benar"
+}
+
+### get soal berdasarkan uuid pertemuan
+GET https://app.webinarku.tech/app2/v1/list-soal-pertemuan/999369a8-b1d1-4a79-ab2c-bde0325ff49d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOGIwMmMyYTYtYzk5NC00M2E1LWFhOGMtZTQwOTRmMDJkZjBjIiwibmFtZSI6InB1amkiLCJlbWFpbCI6ImthbWFydGFzMjhAZ21haWwuY29tIiwidG9rZW5WZXJzaW9uIjowLCJpYXQiOjE3NjEyNjAxMDgsImV4cCI6MTc2MTI2NzMwOH0.aQ_-IhXhWoSCOnsUigJQoQgNfD19OLp1wv7sUswTtiU
+
+
+### delete soal berdasarkan uuid soal
+DELETE https://app.webinarku.tech/app2/v1/delete-soal-pertemuan/4c88c9e4-dc64-485a-9a7f-209d44f65ee4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiYjhkMzUxNWYtZmE3Yy00ZDAzLWI2N2EtNWNmZmMzMTZkYTM1IiwibmFtZSI6IkJhaGxpbCB3YWt0dSBrZWNpbCIsImVtYWlsIjoiZXJsYW5nZ2FoYW5kaWthNzNAZ21haWwuY29tIiwidG9rZW5WZXJzaW9uIjowLCJpYXQiOjE3NjExODAxNTAsImV4cCI6MTc2MTE4MTA1MH0.nkK3m4dmLvzEADX_MV94vuREXfAmG_HZZ2xPVFs8ug4
+
+### mengerjakan
+POST https://app.webinarku.tech/app2/v1/submit-soal-pertemuan/cbe0d3aa-1c5f-4aab-a7df-69a7b15c7ec5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOGIwMmMyYTYtYzk5NC00M2E1LWFhOGMtZTQwOTRmMDJkZjBjIiwibmFtZSI6InB1amkiLCJlbWFpbCI6ImthbWFydGFzMjhAZ21haWwuY29tIiwidG9rZW5WZXJzaW9uIjowLCJpYXQiOjE3NjEyNjAxMDgsImV4cCI6MTc2MTI2NzMwOH0.aQ_-IhXhWoSCOnsUigJQoQgNfD19OLp1wv7sUswTtiU
+Content-Type: application/json
+
+{
+    "answer" : "Semua jawaban benar"
+}
+
+###
+GET https://app.webinarku.tech/app2/v1/list-soal-pertemuan-result/cbe0d3aa-1c5f-4aab-a7df-69a7b15c7ec5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOGIwMmMyYTYtYzk5NC00M2E1LWFhOGMtZTQwOTRmMDJkZjBjIiwibmFtZSI6InB1amkiLCJlbWFpbCI6ImthbWFydGFzMjhAZ21haWwuY29tIiwidG9rZW5WZXJzaW9uIjowLCJpYXQiOjE3NjEyNjAxMDgsImV4cCI6MTc2MTI2NzMwOH0.aQ_-IhXhWoSCOnsUigJQoQgNfD19OLp1wv7sUswTtiU
+
+
+
+//beli ursus
+###
+POST https://app.webinarku.tech/v1/beli-course/e6519bcc-a8c9-43ba-b861-7a85edb6a53d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNzFkOWY5YWQtMDhlMS00MmJkLWE3NTktYzQxMWU3Y2I2YmVhIiwibmFtZSI6IkJhaGxpbCIsImVtYWlsIjoiZXJsYW5nZ2FoYW5kaWthNzNAZ21haWwuY29tIiwidG9rZW5WZXJzaW9uIjowLCJpYXQiOjE3NjE2NjQ4OTcsImV4cCI6MTc2MTY3MjA5N30.Z6-CACFj5GrFDt97GfrwfcoAA_pnZ_GQtYsdmHuCj1M
+
+
+//beli ursus
+###
+
+GET https://app.webinarku.tech/app2/v1/search-kelasuser/dev
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiZjMzYWEzYWYtMjEwZi00NTg1LTg2NzAtZGMyZjhkNmUyNWI2IiwibmFtZSI6InRlcyIsImVtYWlsIjoidGFyb25pc21pbmUwODNAZ21haWwuY29tIiwidG9rZW5WZXJzaW9uIjowLCJpYXQiOjE3NjEyNTcxOTQsImV4cCI6MTc2MTI2NDM5NH0.43zt1MSPUHXSqsedp4yywV4YkAjV7Bi4zmlc4DTBTXU
+###
+GET https://app.webinarku.tech/app2/v1/admin/seluruhpenarikan
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOGIwMmMyYTYtYzk5NC00M2E1LWFhOGMtZTQwOTRmMDJkZjBjIiwibmFtZSI6InB1amkiLCJlbWFpbCI6ImthbWFydGFzMjhAZ21haWwuY29tIiwidG9rZW5WZXJzaW9uIjowLCJpYXQiOjE3NjEyNDY0MTcsImV4cCI6MTc2MTI1MzYxN30.SnpEJbXPFLylELVwe-iQhLSlLcyJ-Jh4HYiGKYhs8fQ
+
+###
+PATCH https://app.webinarku.tech/app2/v1/admin/updateWithdrawalStatus
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOGIwMmMyYTYtYzk5NC00M2E1LWFhOGMtZTQwOTRmMDJkZjBjIiwibmFtZSI6InB1amkiLCJlbWFpbCI6ImthbWFydGFzMjhAZ21haWwuY29tIiwidG9rZW5WZXJzaW9uIjowLCJpYXQiOjE3NjEyNDY0MTcsImV4cCI6MTc2MTI1MzYxN30.SnpEJbXPFLylELVwe-iQhLSlLcyJ-Jh4HYiGKYhs8fQ
+Content-Type: application/json
+
+{
+  "uuid": "4c88c9e4-dc64-485a-9a7f-209d44f65ee4",
+  "status": "approved"
+}

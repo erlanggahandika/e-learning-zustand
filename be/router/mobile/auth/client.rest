@@ -1,0 +1,108 @@
+GET http://localhost:3001/playgroundocker
+
+####
+DELETE http://localhost/v1/sign-out
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOTVlZGU1NGMtZWNmZC00MGE4LWFmYjEtYWIzNjA5OTQ1MjdlIiwibmFtZSI6InNhaHJvbmkgbG9wZSBidW5hIHRlZGR5IiwiZW1haWwiOiJlcmxhbmdnYWhhbmRpa2E3M0BnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc2MDA1Nzc3NywiZXhwIjoxNzYwMDU4Njc3fQ.Xw1A6wZt5kKZFynNFuEOQ8mIwlEH8nvx82JpKC0I_vQ
+
+####
+GET http://localhost:3001/notifications
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMmQ3ZDBhN2QtNTAzMi00ZmIzLWJkYzUtZTMwYWNjODBiOWQ2IiwibmFtZSI6Im5hbWEgdGVzIiwiZW1haWwiOiJ0YXJvbmlzbWluZTA4M0BnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc1OTE1MDI0MywiZXhwIjoxNzU5MTUxMTQzfQ.Z77z3I-qGi_H7n6MjtVrFJrQp8C2_njLqs7Chf-bJ7E
+
+###
+POST http://localhost:3001/create-payment
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "amount": 50000
+}
+
+
+###
+PATCh http://localhost:3001/v1/edit-profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOTVlZGU1NGMtZWNmZC00MGE4LWFmYjEtYWIzNjA5OTQ1MjdlIiwibmFtZSI6ImVybGFuZ2dhIiwiZW1haWwiOiJlcmxhbmdnYWhhbmRpa2E3M0BnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc1OTY1ODIwNiwiZXhwIjoxNzU5NjU5MTA2fQ.JgRS_mv9Lo6wsyvmi_IqHH6v3O5kblRCTk2Vvx_IWjE
+Content-Type: application/json
+
+{
+  "name": "rahmat asik",
+  "phone" : "08137933a"
+}
+
+###
+GET http://localhost:3001/
+
+###
+curl -X POST http://localhost:3001/v1/register -H "Content-Type: application/json" -d '{"name":"tes","email":"a@b.com","password":"123"}'
+
+###
+GET https://ddda47e9214e.ngrok-free.app/v1/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiZGI0MDljZTctN2ZmYy00MjQxLWJmNDAtNTFjMjczYWVlN2E1IiwibmFtZSI6Ik1hcyBBbmdnYSIsImVtYWlsIjoiMTMwNTAzZW5pb2t0YUBnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc2MDI3MjI0MywiZXhwIjoxNzYwMjczMTQzfQ.IKO2X7ysIJudmyKnOl1g0r25WkpIYDmYF-fymJekuqI
+
+### oauth paste ini di browser
+ http://localhost:3001/auth/google
+
+###
+curl -X POST https://ddda47e9214e.ngrok-free.app/v1/sign-in \
+  -H "Content-Type: application/json" \
+  -d '{"email":"130503eniokta@gmail.com","password":"12345678"}'
+
+
+###
+GET http://localhost:3001/v1/list-info-login
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOTVlZGU1NGMtZWNmZC00MGE4LWFmYjEtYWIzNjA5OTQ1MjdlIiwibmFtZSI6InJhaG1hdCBhIiwiZW1haWwiOiJlcmxhbmdnYWhhbmRpa2E3M0BnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc1OTg3NzQzOCwiZXhwIjoxNzU5ODc4MzM4fQ.LcQEYmYV6VamsrbjQhfB1xDNl_Am7USZSeYhrP_uVDA
+
+###
+curl -I https://0f9a697135bf.ngrok-free.app/v1/profile
+
+
+###
+POST http://localhost:3001/v1/refresh-token
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOTVlZGU1NGMtZWNmZC00MGE4LWFmYjEtYWIzNjA5OTQ1MjdlIiwibmFtZSI6InJhaG1hdCBhYWphYWRhaCIsImVtYWlsIjoiZXJsYW5nZ2FoYW5kaWthNzNAZ21haWwuY29tIiwidG9rZW5WZXJzaW9uIjowLCJqdGkiOiI0ZDJmNmNmMS00M2M2LTQ3YjUtOWE4My03NDM0YjM0M2UwYmEiLCJpYXQiOjE3NTk3Njc2MzIsImV4cCI6MTc2MDM3MjQzMn0.0yuDrUsJmt3t6ic0tOuQmUl3TKYw1Y6u8yrRQ_M6KnQ
+
+###
+POST https://app.webinarku.tech/v1/sign-up
+Content-Type: application/json
+
+{
+  "name": "nama tes",
+  "email": "erlanggahan@gmail.com",
+  "password": "123"
+}
+
+###
+POST http://localhost:3001/recovery-password-sudah-login
+Content-Type: application/json
+
+{
+  "email": "taronismine083@gmail.com",
+}
+
+###
+curl -X POST http://localhost:3001/handle-notification \
+-H "Content-Type: application/json" \
+-d '{
+  "order_id": "ORDER-1753340048400",
+  "transaction_status": "settlement",
+  "gross_amount": "50000.00",
+  "status_code": "200",
+  "signature_key": "de7975bab056374fa3e9c7d50307bf7e68585c9963e4929ed03c8b0f98ae745ea0033be574e3799bc0f4dad7f4405e43e7133b352919e1dceaf1b50ca1cbbc47"
+}'
+
+
+###
+GET https://app.webinarku.tech/app2/v1/admin/admin/count-alluser
+Authorization: Bearer kslfds
+
+###
+POST https://app.webinarku.tech/app2/v1/sign-in
+Content-Type: application/json
+
+{
+ "email": "erlan.2159201068@umko.ac.id",
+  "password": "123"
+}
+
+###
+GET https://app.webinarku.tech/app2/v1/admin/getAllSubscriptions
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiY2YzMDQwZTAtMTNlMC00ZDk0LWEzMTktYjUwNmMzYTk4NzQwIiwibmFtZSI6IkJhaGxpbCIsImVtYWlsIjoiZXJsYW4uMjE1OTIwMTA2OEB1bWtvLmFjLmlkIiwidG9rZW5WZXJzaW9uIjowLCJpYXQiOjE3NjExMTYwMjQsImV4cCI6MTc2MTExNjkyNH0.C4mmy33BTJdVsYQizOv5zdiPuxNc7FW4mAKIi8shmsw
+

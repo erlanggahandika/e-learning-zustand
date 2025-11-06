@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE `Meeting` ADD COLUMN `image` VARCHAR(191) NULL,
+    ADD COLUMN `vidio` VARCHAR(191) NULL;

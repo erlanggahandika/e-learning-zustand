@@ -1,0 +1,17 @@
+GET https://app.webinarku.tech/app2/v1/my-community
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiN2U4OGM4ZTctMmFkMi00OGFiLWFjZDAtZjI1MTAyNDJiZDEyIiwibmFtZSI6InRlcyIsImVtYWlsIjoiZXJsYW5nZ2FoYW5kaWthNzNAZ21haWwuY29tIiwidG9rZW5WZXJzaW9uIjowLCJpYXQiOjE3NjEwMjk2NDksImV4cCI6MTc2MTAzMDU0OX0.7Axh2R-F710dARnXfNps0M5LUS_WANUWCY7smP9cHro
+
+####3 
+
+###
+POST https://app.webinarku.tech/app2/v1/sign-in
+Content-Type: application/json
+
+{   
+ "email": "erlanggahandika73@gmail.com",
+  "password": "123"
+}
+
+
+###
+curl -I https://auth.docker.io/token

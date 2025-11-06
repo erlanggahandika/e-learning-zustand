@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `User` ADD COLUMN `plan` INTEGER NULL DEFAULT 1;

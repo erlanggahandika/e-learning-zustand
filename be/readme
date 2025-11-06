@@ -1,0 +1,37 @@
+-- 1. login make oauth google google cloud console
+-- 2. base halaman ada didashboard app/page.tsx
+-- 3. halaman page di lindungin uuid dari agent dan dari login
+
+-- Free
+INSERT INTO PlanFeature (planId, featureName, description, amount) VALUES
+(1, 'Public Profile', 'Buat profil publik seperti LinkedIn versi lite', 0),
+(1, 'Posting & Sharing', 'Bisa membuat postingan dan berbagi pengalaman', 0),
+(1, 'Followers & Friends', 'Bisa mengikuti dan menambah teman (maksimal 200 koneksi)', 0),
+(1, 'Join Communities', 'Gabung ke komunitas publik', 0),
+(1, 'Basic CV Builder', 'Gunakan template CV dasar tanpa analisis', 0),
+(1, 'Free Webinars Access', 'Ikut webinar gratis dengan sertifikat non-verifikasi', 0);
+
+-- Pro
+INSERT INTO PlanFeature (planId, featureName, description, amount) VALUES
+(2, 'AI CV Analysis', 'Analisis kekuatan CV dengan saran perbaikan otomatis', 50000),
+(2, 'Premium Badge', 'Tampilkan badge Premium di profil', 50000),
+(2, 'Unlimited Connections', 'Tidak ada batasan jumlah teman dan followers', 50000),
+(2, 'Create Webinar', 'Buat dan kelola webinar sendiri', 50000),
+(2, 'Verified Certificate', 'Sertifikat otomatis dengan QR & logo resmi', 50000),
+(2, 'Premium Templates', 'Akses template CV profesional dan ATS-friendly', 50000),
+(2, 'Profile Insights', 'Lihat siapa yang melihat profil dan statistik aktivitas', 50000);
+
+-- Enterprise
+INSERT INTO PlanFeature (planId, featureName, description, amount) VALUES
+(3, 'Organization Dashboard', 'Kelola anggota dan aktivitas instansi', 100000),
+(3, 'Large Webinar Hosting', 'Selenggarakan event besar hingga 1000+ peserta', 100000),
+(3, 'Custom Certificate Design', 'Gunakan desain sertifikat kustom dengan logo instansi', 100000),
+(3, 'Recruitment Module', 'Posting lowongan dan analisis pelamar', 100000),
+(3, 'API Integration', 'Integrasi data ke website kampus atau sistem HR', 100000),
+(3, 'Branded Community', 'Buat sub-komunitas dengan logo dan branding sendiri', 100000),
+(3, 'All Pro Features', 'Akses semua fitur dari paket Pro', 100000);
+
+
+-- npx prisma migrate dev --name tambahtabletelegrammasshssa
+
+--docker compose --compatibility up -d --scale backend=3  //auto distributed

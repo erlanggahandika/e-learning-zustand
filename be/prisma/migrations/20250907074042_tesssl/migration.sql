@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `User` MODIFY `planId` INTEGER NULL DEFAULT 0;

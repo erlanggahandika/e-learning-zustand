@@ -1,0 +1,56 @@
+###
+POST https://app.webinarku.tech/app2/v1/sign-in
+Content-Type: application/json
+
+{
+ "email": "taronismine083@gmail.com",
+  "password": "123456"
+
+
+}
+
+###
+GET https://app.webinarku.tech/app2/v1/get-community
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiYTk1NjZmYTEtMjNhNy00ZmJjLTg0M2YtNzdjMTJkMzhmYzE1IiwibmFtZSI6ImRldmVsb3BlciBnYW50ZW5nIiwiZW1haWwiOiJ0YXJvbmlzbWluZTA4M0BnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc2MTAxODg5NiwiZXhwIjoxNzYxMDE5Nzk2fQ.mIw-Sithv5zWuJApZeY3nWuI6qTBgpvoPhqiJkIBeg8
+
+####
+GET https://app.webinarku.tech/app2/v1/my-post
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiZjMzYWEzYWYtMjEwZi00NTg1LTg2NzAtZGMyZjhkNmUyNWI2IiwibmFtZSI6InRlcyIsImVtYWlsIjoidGFyb25pc21pbmUwODNAZ21haWwuY29tIiwidG9rZW5WZXJzaW9uIjowLCJpYXQiOjE3NjExNzI2OTYsImV4cCI6MTc2MTE3MzU5Nn0.Fj4OUqGGDXSm1N_HHZCjlEK96197NBRXXz1vYovd6_Q
+
+####
+POST https://app.webinarku.tech/app2/v1/create-subscription
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiN2U5ZmI0M2ItYzY2My00MTVkLTk3OWMtYTI2ZmFiMGVjNDdkIiwibmFtZSI6ImFkbWluICIsImVtYWlsIjoidGFyb25pc21pbmUwODNAZ21haWwuY29tIiwidG9rZW5WZXJzaW9uIjowLCJpYXQiOjE3NjA2NzIzMjUsImV4cCI6MTc2MDY3MzIyNX0.hLDzyQ_BQptJYnfRjuQbRss-7iL-TNStb-KyKGmzxUo
+Content-Type: application/json
+
+{
+  "planId" : 2
+}
+
+###
+curl -X POST https://app.webinarku.tech/app2/v1/midtrans-webhook -d '{}' -H "Content-Type: application/json"
+
+
+###
+curl -X POST \
+  https://app.webinarku.tech/app2/v1/admin/sign-in \
+  -H 'Content-Type: application/json' \
+  -d '{"email":"erlan.2159201068@umko.ac.id","password":"angga123"}'
+
+
+###
+GET https://app.webinarku.tech/app2/v1/admin/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiZGI0MDljZTctN2ZmYy00MjQxLWJmNDAtNTFjMjczYWVlN2E1IiwibmFtZSI6IkF0bWluIGRhdGFuZyIsImVtYWlsIjoiMTMwNTAzZW5pb2t0YUBnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc2MDU3MjY1MSwiZXhwIjoxNzYwNTczNTUxfQ.B5qIWGz9z3HQkaw5ZtHxRyLwvn9K56dnLEnuRIK-8TE
+###
+GET http://localhost/v1/kategori-kursus
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOTVlZGU1NGMtZWNmZC00MGE4LWFmYjEtYWIzNjA5OTQ1MjdlIiwibmFtZSI6InNhaHJvbmkgbG9wZSBidW5hIHRlZGR5IiwiZW1haWwiOiJlcmxhbmdnYWhhbmRpa2E3M0BnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc2MDAxMTAxMywiZXhwIjoxNzYwMDExOTEzfQ.5FWdERqnCgVYZ6hBVEEK9yqxlG2NGBbAmdqAjmJNRf0
+###
+
+curl -i https://98d855243dc8.ngrok-free.app/v1/profile \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiZGI0MDljZTctN2ZmYy00MjQxLWJmNDAtNTFjMjczYWVlN2E1IiwibmFtZSI6Ik1hcyBBbmdnYSIsImVtYWlsIjoiMTMwNTAzZW5pb2t0YUBnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc2MDMxMTQ3NSwiZXhwIjoxNzYwMzEyMzc1fQ.24uO1HVa8cnnvcixZ2YWbQd9IyQFC2ghsP3Nvqg3GA8"
+
+
+###
+curl -v https://98d855243dc8.ngrok-free.app/v1/profile \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiZGI0MDljZTctN2ZmYy00MjQxLWJmNDAtNTFjMjczYWVlN2E1IiwibmFtZSI6Ik1hcyBBbmdnYSIsImVtYWlsIjoiMTMwNTAzZW5pb2t0YUBnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc2MDMxNjc3MSwiZXhwIjoxNzYwMzE3NjcxfQ._cdKFbVJ9N9hno5YMEEFRL24VKxWXbt2FivhjD_4tRc" \
+  -H "ngrok-skip-browser-warning: true"
+

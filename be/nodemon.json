@@ -1,0 +1,9 @@
+{
+  "watch": ["."],
+  "ext": "js,json,mjs",
+  "exec": "node index.js",
+  "ignore": [
+    "imageHistory.json"
+  ],
+  "legacyWatch": true
+}

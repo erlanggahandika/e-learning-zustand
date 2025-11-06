@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE `User` ADD COLUMN `lastLogin` DATETIME(3) NULL,
+    ADD COLUMN `tokenJwt` VARCHAR(191) NULL;

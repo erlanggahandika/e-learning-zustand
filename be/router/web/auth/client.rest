@@ -1,0 +1,49 @@
+###
+POST https://app.webinarku.tech/v1/admin/sign-in
+Content-Type: application/json
+
+{
+ "email": "erlanggahandika73@gmail.com",
+  "password": "12345678"
+}
+
+###
+GET https://app.webinarku.tech/v1/admin/search-user/taronismine083
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOGEyNDU4MzYtYjliYS00YmRmLTgxNzEtOGU3MDk2ZDNmODdhIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJlcmxhbmdnYWhhbmRpa2E3M0BnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc2MTg2NDkwMiwiZXhwIjoxNzYxODcyMTAyfQ.TS3EIncoOsnCYr0YVv0an6zB-Ue00tk6GmVBErK1KVU
+
+###
+GET https://app.webinarku.tech/v1/admin/get-notifikasi-admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOGEyNDU4MzYtYjliYS00YmRmLTgxNzEtOGU3MDk2ZDNmODdhIiwibmFtZSI6Im5hbWEgdGVzIiwiZW1haWwiOiJlcmxhbmdnYWhhbmRpa2E3M0BnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc2MTc5NTk5MywiZXhwIjoxNzYxODAzMTkzfQ.4_r6Bvwk1qCre4D3DQ1kk7c23zJ_ARUhSp4FS0LfILg
+
+
+###
+GET https://app.webinarku.tech/v1/admin/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOGEyNDU4MzYtYjliYS00YmRmLTgxNzEtOGU3MDk2ZDNmODdhIiwibmFtZSI6Im5hbWEgdGVzIiwiZW1haWwiOiJlcmxhbmdnYWhhbmRpa2E3M0BnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc2MTc4MTMxOCwiZXhwIjoxNzYxNzg4NTE4fQ.Uy4f60vb7dscNo1IutN5CJUnC9gajtkYFvlXqLVSHaU
+
+######
+POST https://app.webinarku.tech/v1/admin/register
+Content-Type: application/json
+
+{
+  "name": "nama tes",
+  "email": "erlanggahandika73@gmail.com",
+  "password": "123"
+}
+
+####
+POST https://app.webinarku.tech/v1/admin/verifykode
+Content-Type: application/json
+
+{
+  "email": "erlanggahandika73@gmail.com",
+  "otp_code": "487804"
+}
+
+
+####
+GET https://app.webinarku.tech/v1/admin/getAllTransactions
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOGEyNDU4MzYtYjliYS00YmRmLTgxNzEtOGU3MDk2ZDNmODdhIiwibmFtZSI6Im5hbWEgdGVzIiwiZW1haWwiOiJlcmxhbmdnYWhhbmRpa2E3M0BnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc2MTY2NTAxMSwiZXhwIjoxNzYxNjcyMjExfQ.Miqlj09YjjDr86aP0A951jYRYvbywhVzqBdlRDQltq8
+
+###
+curl http://localhost:8082/
+

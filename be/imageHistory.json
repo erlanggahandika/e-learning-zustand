@@ -1,0 +1,29 @@
+{
+  "error_service_simulated": [
+    "alpine"
+  ],
+  "dockermate-nextjs-1": [
+    "dockermate-frontend:dev"
+  ],
+  "dockermate-backend-1": [
+    "dockermate-backend:dev"
+  ],
+  "haibank_phpmyadmin_1": [
+    "phpmyadmin/phpmyadmin:latest"
+  ],
+  "dockermate_nextjs_1": [
+    "dockermate-frontend:dev"
+  ],
+  "dockermate_backend_1": [
+    "dockermate-backend:dev"
+  ],
+  "dockermate_jaeger_1": [
+    "jaegertracing/all-in-one:latest"
+  ],
+  "dockermate_mysql_1": [
+    "mysql:8"
+  ],
+  "dockermate_adminer_1": [
+    "adminer"
+  ]
+}

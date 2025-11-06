@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE `User` MODIFY `plan` INTEGER NULL DEFAULT 3;
+
+-- AlterTable
+ALTER TABLE `webinar` ADD COLUMN `pdf` VARCHAR(191) NULL;

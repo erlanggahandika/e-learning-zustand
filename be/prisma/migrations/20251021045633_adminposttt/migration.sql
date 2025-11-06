@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `Post` ADD COLUMN `adminPost` INTEGER NULL DEFAULT 0;

@@ -1,0 +1,44 @@
+###
+POST https://app.webinarku.tech/v1/admin/sign-in
+Content-Type: application/json
+
+{
+ "email": "erlanggahandika73@gmail.com",
+  "password": "1233"
+}
+
+###
+POST https://app.webinarku.tech/v1/admin/search-transactions/course 2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOGEyNDU4MzYtYjliYS00YmRmLTgxNzEtOGU3MDk2ZDNmODdhIiwibmFtZSI6Im5hbWEgdGVzIiwiZW1haWwiOiJlcmxhbmdnYWhhbmRpa2E3M0BnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc2MTY5MzA1MCwiZXhwIjoxNzYxNzAwMjUwfQ.yEd9eIFxwTndjX62YtdmAk-eiZ1wzWZtLpJQCerijIs
+
+
+###
+GET https://app.webinarku.tech/v1/admin/subscriptions-by-date?from=2025-10-28&to=2025-10-28
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOGEyNDU4MzYtYjliYS00YmRmLTgxNzEtOGU3MDk2ZDNmODdhIiwibmFtZSI6Im5hbWEgdGVzIiwiZW1haWwiOiJlcmxhbmdnYWhhbmRpa2E3M0BnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc2MTcxMjg5OSwiZXhwIjoxNzYxNzIwMDk5fQ.hGlOa57V1bI7mCmfx9EQjw-8SiOvsU2BTSBwfC9uils
+
+###
+GET https://app.webinarku.tech/v1/admin/getAllTransactions
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOGEyNDU4MzYtYjliYS00YmRmLTgxNzEtOGU3MDk2ZDNmODdhIiwibmFtZSI6Im5hbWEgdGVzIiwiZW1haWwiOiJlcmxhbmdnYWhhbmRpa2E3M0BnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc2MTcyNjU3MiwiZXhwIjoxNzYxNzMzNzcyfQ.iDi88x5z8GMVNlN8yoGn_QqTIFYUnZG500kn3MhWC8k
+
+###
+POST https://app.webinarku.tech/v1/admin/create-banner-admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOGEyNDU4MzYtYjliYS00YmRmLTgxNzEtOGU3MDk2ZDNmODdhIiwibmFtZSI6Im5hbWEgdGVzIiwiZW1haWwiOiJlcmxhbmdnYWhhbmRpa2E3M0BnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc2MTcyMTY2NiwiZXhwIjoxNzYxNzI4ODY2fQ.-l-q5j7QsNJaYXntjcQ3dxj6eznapEkZp34ZHku8NzI
+Content-Type: application/json
+
+{
+  "title": "Banner Baru",
+  "image": "/uploads/avatar1.png",
+  "sortOrder": 2
+}
+
+###
+PATCH https://app.webinarku.tech/v1/admin/update-banner-admin/a7915748-be35-4a97-9612-bb4c12942715
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOGEyNDU4MzYtYjliYS00YmRmLTgxNzEtOGU3MDk2ZDNmODdhIiwibmFtZSI6Im5hbWEgdGVzIiwiZW1haWwiOiJlcmxhbmdnYWhhbmRpa2E3M0BnbWFpbC5jb20iLCJ0b2tlblZlcnNpb24iOjAsImlhdCI6MTc2MTcyNjMyMSwiZXhwIjoxNzYxNzMzNTIxfQ.VhXuOQ_EEVQ7H8UH15BoifKszD6DGJJc4KR9VRfr0jU
+Content-Type: application/json
+
+{
+  "title": "Banner devops",
+  "image": "/uploads/avatar2.png",
+  "sortOrder": 4,
+  "isActive": true
+}

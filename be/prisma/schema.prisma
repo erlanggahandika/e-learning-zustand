@@ -1,0 +1,394 @@
+generator client {
+  provider = "prisma-client-js"
+  // output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model SuperUser {
+  id           Int        @id @default(autoincrement())
+  email        String     @unique
+  password     String
+  name         String?
+  avatar       String?
+  title        String?
+  phone        String?
+  hakAkses     String?
+ 
+  tokenJwt     String?    @db.Text // token refresh pas login
+  lastLogin    DateTime?
+  token_notification String?
+  refreshTokenExp     DateTime?
+  plan         Int?       @default(1)
+  tokenVersion Int?       @default(0)
+  uuid         String?    @unique @default(uuid())
+  createdAt    DateTime   @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  notification_active notification_active @default(active)
+
+  // 🔔 Relasi dengan notifikasi lama
+ 
+ 
+}
+
+enum notification_active {
+  active
+  nonActive
+}
+
+model User {
+  id           Int        @id @default(autoincrement())
+  email        String     @unique
+  password     String
+  name         String?
+  avatar       String?
+  title        String?
+  phone        String?
+ 
+  tokenJwt     String?    @db.Text // token refresh pas login
+  lastLogin    DateTime?
+  token_notification String?
+  refreshTokenExp     DateTime?
+  plan         Int?       @default(1)
+  tokenVersion Int?       @default(0)
+  uuid         String?    @unique @default(uuid())
+  createdAt    DateTime   @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  notification_active notification_active @default(active)
+
+  // 🔔 Relasi dengan notifikasi lama
+  notif        Notifikasi[]
+
+  // 🧩 Relasi fitur sosial
+  transactions transaction[]
+  subscriptions Subscription[] 
+   enrollments Enrollment[]
+  testResults TestResult[]
+ 
+}
+
+model BannerCategory {
+  id        Int       @id @default(autoincrement())
+  name      String
+  banners   Banner[]  
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Banner {
+  id             Int             @id @default(autoincrement())
+  uuid           String          @default(uuid()) @unique
+  title          String
+  image          String
+  categoryName   String?
+  isActive      Boolean         @default(false)
+  sortOrder      Int             @default(0)
+  categoryId     Int             
+  category       BannerCategory  @relation(fields: [categoryId], references: [id])
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+}
+
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  name      String
+  balance   Int      @default(0)   // saldo admin dalam rupiah
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+model Course {
+  id          Int         @id @default(autoincrement())
+  title       String
+  description String
+  uuid        String      @default(uuid()) @unique
+  mentorname  String
+  mentoruuid  String
+  vidio       String?
+  image       String?
+  mentor      Mentor    @relation(fields: [mentorId], references: [id])
+  mentorId    Int
+  price       Int         // harga dalam rupiah
+  isPublished Boolean     @default(false)
+  meetings    Meeting[]
+  enrollments Enrollment[]
+  transactions transaction[] 
+
+  createdAt   DateTime    @default(now())
+}
+
+model Mentor {
+  id       Int      @id @default(autoincrement())
+  name     String
+  email    String   @unique
+  balance  Int      @default(0) // saldo mentor dalam rupiah
+  courses  Course[]
+  transactions transaction[]
+withdrawalRequests WithdrawalRequest[]
+
+  createdAt DateTime @default(now())
+}
+
+model WithdrawalRequest {
+  id             Int       @id @default(autoincrement())
+  uuid           String    @default(uuid()) @unique
+  mentor         Mentor    @relation(fields: [mentorId], references: [id])
+  mentorId       Int
+  mentorUuid     String
+  bankName       String
+  accountName    String
+  accountNumber  String
+  amount         Int
+  status         String    @default("pending") // pending | approved | rejected
+  proofImage     String?   // URL atau path bukti transfer (opsional)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model transaction {
+  id        Int      @id @default(autoincrement())
+  mentor    Mentor?   @relation(fields: [mentorId], references: [id])
+  mentorId  Int?
+  course    Course?  @relation(fields: [courseId], references: [id])
+  courseId  Int?
+  useruuid  String?
+  snapUrl   String?
+  type      String   // "credit" / "debit" / "payout"
+  amount    Int
+  isAdmin   Boolean  @default(false)
+  description String?
+  status    String   // "pending" / "completed" / "failed"
+  createdAt DateTime @default(now())
+   user User? @relation(fields: [useruuid], references: [uuid])
+}
+
+
+model Meeting {
+  id        Int       @id @default(autoincrement())
+  title     String
+  uuid      String    @default(uuid()) @unique
+  content   String?
+  vidio     String?
+  image     String?
+  course    Course    @relation(fields: [courseId], references: [id])
+  courseId  Int
+  courseuuid String
+  order     Int
+  tests     Test[]
+}
+
+model Test {
+  id        Int       @id @default(autoincrement())
+  question  String
+  options   Json
+  answer    String
+  uuidtest  String?   @unique
+  results   TestResult[] 
+  meeting   Meeting   @relation(fields: [meetingId], references: [id])
+  meetingId Int
+}
+
+model Enrollment {
+  id        Int       @id @default(autoincrement())
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int
+  useruuid  String
+  course    Course    @relation(fields: [courseId], references: [id])
+  courseId  Int
+  snapToken String?
+  midtransOrderId String?
+  snapUrl    String? 
+  paid      Boolean   @default(false)
+  paymentId String?
+  createdAt DateTime  @default(now())
+}
+
+model TestResult {
+  id       Int       @id @default(autoincrement())
+  user     User      @relation(fields: [userId], references: [id],  onDelete: Cascade)
+  userId   Int
+  test     Test      @relation(fields: [testId], references: [id],  onDelete: Cascade)
+  testId   Int
+  useruuid String?
+  answer   String
+  correct  Boolean
+  createdAt DateTime  @default(now())
+}
+
+model Subscription {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  planId      Int
+  status      String   @default("pending")
+  amount      Int
+  paymentId   String?
+  snapToken   String?  // token Midtrans
+  snapUrl     String?  // redirect_url Midtrans
+  startDate   DateTime?
+  endDate     DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+
+  user        User     @relation(fields: [userId], references: [id],  onDelete: Cascade)
+}
+model kategoriKursus {
+  id        Int       @id @default(autoincrement())
+  name      String
+  uuid      String?    @unique  @default(uuid())
+  sortOrder  Int       @default(0)
+  level     Int?
+  image     String?
+  createdAt DateTime  @default(now())
+}
+model loginActivity {
+  id          Int       @id @default(autoincrement())
+  userUuid    String    //gabisa uniq, karena user bisa login di beberapa device
+  ipAddress   String?
+  deviceInfo  String?
+  location    String?    // Contoh: "Jakarta, Indonesia"
+  status      String     @default("success") // success / failed
+  loginMethod String?    // email, google, github, etc.
+  loginTime   DateTime   @default(now())
+  createdAt   DateTime   @default(now())
+}
+
+model Notifikasi {
+  id        Int       @id @default(autoincrement())
+  title     String
+  message   String
+  isRead    Boolean   @default(false)
+  type      String
+  email     String?
+  createdAt DateTime  @default(now())
+  uuid      String?    
+  
+  userId    Int?
+  user      User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+ 
+}
+model Register {
+  id        Int       @id @default(autoincrement())
+  name      String
+  password  String
+  email     String    @unique
+  otp       String?    
+  createdAt DateTime  @default(now())
+}
+
+model emailOtp {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  otp       String    @unique
+  isUsed    Boolean   @default(false)
+  expiredAt DateTime
+  createdAt DateTime  @default(now())
+}
+
+enum OtpType {
+  register
+  reset
+  recovery_password
+}
+
+model otpPengguna {
+  id             Int       @id @default(autoincrement())
+  email          String   
+  otp_code       String?    @db.VarChar(6)
+  type           OtpType
+  recovery_token String?   // nullable kalau tidak selalu ada
+  isUsed         Boolean   @default(false)
+  expiredAt      DateTime
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model Event {
+  id_event             Int             @id @default(autoincrement())
+  uuid                 String          @unique @default(uuid())
+  event_name           String          @db.VarChar(200)
+  event_desc           String?
+  instruction          String?
+  event_status         String?         @db.VarChar(100)
+  event_type           Int?
+  event_duration       Int?
+  event_image          String?
+  event_passing_grade  Int?
+  event_start          DateTime?
+  event_end            DateTime?
+  branch_id            Int?
+  created_at           DateTime?       @default(now())
+
+  // Relations
+  event_scripts        EventScript[]
+  event_members        EventMember[]
+  event_branches       EventBranch[]
+}
+
+model EventScript {
+  id_event_script      Int       @id @default(autoincrement())
+  uuid                 String    @unique @default(uuid())
+  no_event             String?   @db.VarChar(5)
+  type_no_question     String?   @db.VarChar(100)
+  auto_nest            Boolean?  @default(false)
+  event_id             Int
+  script_id            Int?
+  created_date         DateTime? @default(now())
+
+  // Relations
+  event                Event     @relation(fields: [event_id], references: [id_event])
+  event_scores         EventScore[]
+}
+
+model EventScore {
+  id_event_score       Int       @id @default(autoincrement())
+  uuid                 String    @unique @default(uuid())
+  score                Int?
+  no_event             Int?
+  event_score_status   String?   @db.VarChar(100)
+  event_session_start  DateTime?
+  event_session_finish DateTime?
+  event_session_expired DateTime?
+  event_script_id      Int
+  event_member_id      Int
+  created_at           DateTime? @default(now())
+
+  // Relations
+  event_script         EventScript @relation(fields: [event_script_id], references: [id_event_script])
+  event_member         EventMember @relation(fields: [event_member_id], references: [id_event_member])
+}
+
+model EventMember {
+  id_event_member      Int       @id @default(autoincrement())
+  uuid                 String    @unique @default(uuid())
+  total_score          Int?
+  event_start          DateTime?
+  event_end            DateTime?
+  event_expired        DateTime?
+  event_member_status  String?   @db.VarChar(100)
+  total_reset          Int?
+  event_id             Int
+  member_id            String?   @db.VarChar(150)
+  created_at           DateTime? @default(now())
+
+  // Relations
+  event                Event       @relation(fields: [event_id], references: [id_event])
+  event_scores         EventScore[]
+}
+
+model EventBranch {
+  id_event_branch      Int       @id @default(autoincrement())
+  uuid                 String    @unique @default(uuid())
+  event_id             Int
+  branch_id            Int?
+  
+  // Relations
+  event                Event     @relation(fields: [event_id], references: [id_event])
+}
+
+
